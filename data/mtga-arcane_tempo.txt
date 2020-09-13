@@ -1,0 +1,27 @@
+4 Goblin Electromancer (GRN) 174
+4 Crackling Drake (C19) 190
+2 Murmuring Mystic (GRN) 45
+1 Arclight Phoenix (GRN) 91
+2 Niv-Mizzet, Parun (GRN) 192
+4 Chart a Course (XLN) 48
+4 Lava Coil (GRN) 108
+1 Beacon Bolt (GRN) 154
+4 Opt (ELD) 59
+4 Radical Idea (GRN) 52
+4 Shock (M20) 160
+2 Dive Down (XLN) 53
+1 Blink of an Eye (DOM) 46
+1 The Mirari Conjecture (DOM) 57
+3 Sulfur Falls (DOM) 247
+4 Izzet Guildgate (C19) 253
+8 Island (GN2) 58
+7 Mountain (GN2) 62
+
+
+1 The Mirari Conjecture (DOM) 57
+1 Beacon Bolt (GRN) 154
+3 Negate (M20) 69
+3 Entrancing Melody (XLN) 55
+3 Fiery Cannonade (XLN) 143
+2 Shivan Fire (DOM) 142
+2 Disdainful Stroke (GRN) 37

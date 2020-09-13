@@ -228,6 +228,7 @@ def detect_cards(frame, min_focus=120, grayscale=True, correct_glare=False,
         img = cv2.Canny(img, 40, 250)
     kernel = np.ones((dilate_radius, dilate_radius), np.uint8)
     img = cv2.dilate(img, kernel, iterations=1)
+    img = cv2.erode(img, kernel, iterations=1)
     # find contours
     img = img.copy()
     # img = cv2.Canny(img, 40, 250)
@@ -371,7 +372,6 @@ def validate_detection(image, box, aspect=Card.aspect, acceptance=0.15):
         # calculate the real aspect ratio
         aspect_real = np.sqrt(np.dot(np.dot(np.dot(n2, Ati), Ai), n2) /
                               np.dot(np.dot(np.dot(n3, Ati), Ai), n3))
-        # aspect_real = aspect_estimate
         flip = (aspect_real > 1)
         if flip:
             aspect_real = 1. / aspect_real
@@ -422,6 +422,7 @@ def find_match(temp_img, img, mask=None, method='template', threshold=0.5):
     img1 = temp_img.copy()
     img2 = img.copy()
     w, h = img2.shape[:2]
+
     # TEMPLATE-MATCHING method
     if method == 'template' or method == 'temp':
         # fix template
@@ -431,7 +432,6 @@ def find_match(temp_img, img, mask=None, method='template', threshold=0.5):
         tw, th = img1.shape[:2]
         # match template in picture
         matching_method = cv2.TM_CCOEFF_NORMED
-        # other methods:
         # cv2.TM_CCOEFF_NORMED, cv2.TM_CCORR_NORMED, cv2.TM_SQDIFF_NORMED
         res = cv2.matchTemplate(img2, img1, matching_method)
         display_image(res, 'matchting_method')
@@ -446,7 +446,7 @@ def find_match(temp_img, img, mask=None, method='template', threshold=0.5):
         # img2 = cv2.cvtColor(img2, cv2.COLOR_GRAY2BGR)
         for pt in zip(*loc[::-1]):
             cv2.rectangle(img2, pt, (pt[0]+tw, pt[1]+th), (0, 255, 0), 2)
-        display_image(img2, 'matches', with_loop=True)
+        display_image(img2, 'matches', with_loop=False)
         
     # BRUTE-FORCE method
     elif method == 'brute' or method == 'bf':
@@ -459,7 +459,8 @@ def find_match(temp_img, img, mask=None, method='template', threshold=0.5):
             return
         matches = sorted(matches, key=lambda x:x.distance)
         img3 = cv2.drawMatches(img1, kp1, img2, kp2, matches[:100], None, flags=2)
-        display_image(img3, 'matches', with_loop=True)
+        display_image(img3, 'matches', with_loop=False)
+
     # FLANN method
     elif method == 'flann':
         FLANN_INDEX_LSH = 6
@@ -470,7 +471,6 @@ def find_match(temp_img, img, mask=None, method='template', threshold=0.5):
         flann = cv2.FlannBasedMatcher(index_params, search_params)
         kp1, des1 = orb.detectAndCompute(img1, None)
         kp2, des2 = orb.detectAndCompute(img2, None)
-
         matches = flann.knnMatch(des1, des2, k=2)
         matchesMask = [[0, 0] for i in range(len(matches))]
         for i, match in enumerate(matches):
@@ -479,29 +479,16 @@ def find_match(temp_img, img, mask=None, method='template', threshold=0.5):
             m, n = match
             if m.distance < 0.7 * n.distance:
                 matchesMask[i] = [1, 0]
-
         draw_params = dict(matchColor=(0, 255, 0), singlePointColor=(255, 0, 0),
                            matchesMask=matchesMask, flags=cv2.DrawMatchesFlags_DEFAULT)
-
         img3 = cv2.drawMatchesKnn(img1, kp1, img2, kp2, matches, None, **draw_params)
-        display_image(img3, 'matches', with_loop=True)
+        display_image(img3, 'matches', with_loop=False)
 
 
 
 if __name__ == "__main__":
-    # graphics setup
-    # orb = cv2.ORB_create()
-    # bf = cv2.BFMatcher(cv2.NORM_HAMMING)
 
-    # get image data
-    # scry = mtg.scryfall.ScryfallCardName('atraxa', format='image')
-    # decode and convert image byte string
-    # img_b64 = b64decode(scry.data)
-    # img_np = np.asarray(bytearray(scry.data), dtype=np.uint8)
-    # img = cv2.imdecode(img_np, cv2.IMREAD_GRAYSCALE)
-    # img = cv2.imdecode(img_np, cv2.IMREAD_COLOR)
-
-    if 0:
+    if 1:
         from mtg.templates import svgs, svg2img
         U = svg2img(svgs['U'])
 
@@ -534,7 +521,7 @@ if __name__ == "__main__":
             # analyze extracted card
             if warp is not None:
                 display_image(warp, name='detection', with_loop=False, flip=False)
-                find_match(U, warp)
+                find_match(U, warp, mask=(.5, 1, 0, .25))
 
             # clean up
             key = cv2.waitKey(1) & 0xFF
@@ -545,7 +532,7 @@ if __name__ == "__main__":
         cv2.destroyAllWindows()
     
     # inspect single image
-    if 1:
+    if 0:
         from mtg.templates import svgs, svg2img
         U = svg2img(svgs['U'])
 

@@ -15,10 +15,10 @@ from tests.sqlcommands_test import SQLCommandsTest
 
 
 loader = SequentialTestLoader()
-loader.proto_load(ScryfallBaseTest)
-loader.proto_load(ScryfallCardNameTest)
-loader.proto_load(ScryfallSearchTest)
-loader.proto_load(ScryfallSetsTest)
+# loader.proto_load(ScryfallBaseTest)
+# loader.proto_load(ScryfallCardNameTest)
+# loader.proto_load(ScryfallSearchTest)
+# loader.proto_load(ScryfallSetsTest)
 loader.proto_load(CardTest)
 # loader.proto_load(SQLCommandsTest)
 

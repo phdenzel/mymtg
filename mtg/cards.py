@@ -107,7 +107,10 @@ class Card(BaseObject):
     @property
     def multiverse_id(self):
         if isinstance(self.multiverse_ids, list):
-            return int(self.multiverse_ids[0])
+            if self.multiverse_ids:
+                return int(self.multiverse_ids[0])
+            else:
+                return None
         elif isinstance(self.multiverse_ids, str):
             return int(self.multiverse_ids)
         else:

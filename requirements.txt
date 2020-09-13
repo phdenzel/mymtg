@@ -1,0 +1,10 @@
+parse
+aiohttp
+asyncio
+urllib
+opencv-python
+flask
+scipy
+numpy
+cv2
+cv2-...

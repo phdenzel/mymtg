@@ -1,0 +1,27 @@
+1 Vraska, Relic Seeker (XLN) 232
+4 Merfolk Branchwalker (XLN) 197
+4 Llanowar Elves (M19) 314
+4 Wildgrowth Walker (XLN) 216
+4 Seekers' Squire (XLN) 121
+2 Jadelight Ranger (RIX) 136
+3 Ravenous Chupacabra (NON) 0
+1 Plaguecrafter (C19) 126
+2 District Guide (GRN) 128
+3 Golgari Findbroker (GRN) 175
+2 Find // Finality (GRN) 225
+4 Cast Down (DOM) 81
+3 The Eldest Reborn (C19) 131
+2 Woodland Cemetery (DOM) 248
+4 Golgari Guildgate (C19) 247
+1 Overgrown Tomb (GRN) 253
+2 Memorial to Folly (C19) 259
+8 Forest (GN2) 64
+6 Swamp (GN2) 60
+
+
+4 Duress (M20) 97
+2 Arguel's Blood Fast (XLN) 90
+3 Golden Demise (RIX) 73
+2 Reclamation Sage (NON) 0
+2 Kraul Harpooner (GRN) 136
+2 Murder (M20) 109

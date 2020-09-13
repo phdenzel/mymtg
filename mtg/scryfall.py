@@ -1,3 +1,4 @@
+import os
 import re
 import aiohttp
 import asyncio
@@ -71,6 +72,8 @@ class ScryfallBase(object):
     @classmethod
     def save_image(cls, query, image_name='cache/image.jpg', **kwargs):
         scry = cls(query, format='image', **kwargs)
+        if os.path.exists(image_name):
+            image_name = image_name.replace('.jpg', '_1.jpg')
         if isinstance(scry.raw_data, bytes):
             with open(image_name,'wb') as f:
                 f.write(scry.raw_data)

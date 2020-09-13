@@ -1,0 +1,23 @@
+1 Chandra, Torch of Defiance (KLD) 110
+1 Hazoret the Fervent (NON) 0
+3 Soul-Scar Mage (NON) 0
+4 Bomat Courier (KLD) 199
+3 Kari Zev, Skyship Raider (AER) 87
+3 Harsh Mentor (NON) 0
+1 Glorybringer (NON) 0
+4 Fanatical Firebrand (RIX) 101
+4 Ahn-Crop Crasher (NON) 0
+4 Shock (NON) 0
+4 Lightning Strike (NON) 0
+2 Abrade (NON) 0
+2 Magma Spray (NON) 0
+4 Sunscorched Desert (NON) 0
+20 Mountain (NON) 0
+
+
+2 Magma Spray (NON) 0
+2 Key to the City (C19) 216
+2 Pia Nalaar (KLD) 124
+2 Kari Zev's Expertise (AER) 88
+3 Sentinel Totem (XLN) 245
+4 Chandra's Defeat (NON) 0

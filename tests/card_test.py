@@ -45,20 +45,21 @@ class CardTest(UnitTestPrototype):
 
     def test_Card4(self):
         """ # Card """
-        args = ScryfallCardName('Prismatic Vista', set='MH1')
+        args = ScryfallCardName("Breeding Pool", set='RNA')
         self.arg_print(args)
         # pprint.pprint(args.raw_data)
         card4 = Card(**args)
         pprint.pprint(card4)
         print(card4.__v__)
+        card4.save_image(version='png')
 
     def test_save_image(self):
         """ # save_image """
-        args = ScryfallCardName('Black Lotus')
+        args = ScryfallCardName("Bloodstained Mire", set='KTK')
         self.arg_print(args)
         # pprint.pprint(args.data)
-        card4 = Card(**args)
-        card4.save_image(version='large')
+        card5 = Card(**args)
+        card5.save_image(version='png')
 
     def test_from_txt(self):
         """ # from_txt """
